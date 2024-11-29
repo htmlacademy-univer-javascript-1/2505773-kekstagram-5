@@ -1,3 +1,7 @@
+import { resetScale } from './scale.js';
+import { init, reset } from './effects.js';
+
+
 const MAX_COMMENT_LENGTH = 140;
 const MAX_HASHTAG_COUNT = 5;
 const VALID_HASHTAG = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -78,6 +82,8 @@ const closeForm = () => {
   imgUploadOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
+  resetScale();
+  reset();
 };
 
 function onDocumentKeydown(evt) {
@@ -92,3 +98,4 @@ function onDocumentKeydown(evt) {
 imgUploadCancel.addEventListener('keydown', onDocumentKeydown);
 imgUploadCancel.addEventListener('click', closeForm);
 imgUploadForm.addEventListener('change', showForm);
+init();
